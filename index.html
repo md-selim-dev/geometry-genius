@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometry Gem</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body class="m-6">
+  <header class="flex rounded-md bg-sky-100 justify-between px-10 py-3 items-center mb-6">
+    <div>
+      <h1 class="text-4xl font-bold">Interactive</h1>
+      <h2 class="text-2xl font-light">Geometry Genius</h2>
+    </div>
+    <div>
+      <button class="btn btn-primary px-6">Blog</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- main content container -->
+    <div class="flex flex-col-reverse gap-6 md:flex-row lg:flex-row">
+      <!-- shape card container -->
+       <div class="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Triangle Area -->
+        <div class="card bg-base-100 w-80 shadow-xl text-center">
+          <figure class="p-6">
+            <img
+              src="images/triangle.png"
+              alt="triangle" />
+          </figure>
+          <div class="card-body">
+            <h2 class="text-3xl font-bold text-center">Triangle</h2>
+            <p>Area = 0.5 * b * h</p>
+            <div class="flex overflow-hidden justify-center gap-4">
+              <div class="flex gap-1">
+                <input id="triangle-base" class="bg-gray-100 text-lg rounded-md w-24 outline-none px-2 py-1" type="text" placeholder="base"> <span>cm</span>
+              </div>
+              <div class="flex gap-1">
+                <input id="triangle-height" class="bg-gray-100 text-lg rounded-md outline-none px-2 py-1 w-24" type="text" placeholder="height"> <span>cm</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button onclick="calculateTriangleArea()" class="btn btn-primary w-full">Calculate</button>
+            </div>
+          </div>
+        </div>
+        <!-- Rectangle Area -->
+        <div class="card bg-base-100 w-80 shadow-xl text-center">
+          <figure class="p-6">
+            <img
+              src="images/rectangle.png"
+              alt="rectangle" />
+          </figure>
+          <div class="card-body">
+            <h2 class="text-3xl font-bold text-center">Rectangle</h2>
+            <p>Area = l * w</p>
+            <div class="flex overflow-hidden justify-center gap-4">
+              <div class="flex gap-1">
+                <input id="rectangle-length" class="bg-gray-100 text-lg rounded-md w-24 outline-none px-2 py-1" type="text" placeholder="length"> <span>cm</span>
+              </div>
+              <div class="flex gap-1">
+                <input id="rectangle-width" class="bg-gray-100 text-lg rounded-md outline-none px-2 py-1 w-24" type="text" placeholder="width"> <span>cm</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button onclick="calculateRectangleArea()" class="btn btn-primary w-full">Calculate</button>
+            </div>
+          </div>
+        </div>
+        <!-- Parallelogram Area -->
+        <div class="card bg-base-100 w-80 shadow-xl text-center">
+          <figure class="p-6">
+            <img
+              src="images/parallelogram.png"
+              alt="parallelogram" />
+          </figure>
+          <div class="card-body">
+            <h2 class="text-3xl font-bold text-center">Parallelogram</h2>
+            <p>Area = b * h</p>
+            <div class="flex overflow-hidden justify-center gap-4">
+              <div class="flex gap-1">
+                <input id="parallelogram-base" class="bg-gray-100 text-lg rounded-md w-24 outline-none px-2 py-1" type="text" placeholder="base"> <span>cm</span>
+              </div>
+              <div class="flex gap-1">
+                <input id="parallelogram-height" class="bg-gray-100 text-lg rounded-md outline-none px-2 py-1 w-24" type="text" placeholder="height"> <span>cm</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button onclick="calculateParallelogramArea()" class="btn btn-primary w-full">Calculate</button>
+            </div>
+          </div>
+        </div>
+        <!-- Rhombus Area -->
+        <div class="card bg-base-100 w-80 shadow-xl text-center">
+          <figure class="p-6">
+            <img
+              src="images/rhombus.png"
+              alt="rhombus" />
+          </figure>
+          <div class="card-body">
+            <h2 class="text-3xl font-bold text-center">Rhombus</h2>
+            <p>Area = 0.5 * d1 * d2</p>
+            <div class="flex overflow-hidden justify-center gap-4">
+              <div class="flex gap-1">
+                <input id="rhombus-diagonals-1" class="bg-gray-100 text-lg rounded-md w-24 outline-none px-2 py-1" type="text" placeholder="dia-1"> <span>cm</span>
+              </div>
+              <div class="flex gap-1">
+                <input id="rhombus-diagonals-2" class="bg-gray-100 text-lg rounded-md outline-none px-2 py-1 w-24" type="text" placeholder="dia-2"> <span>cm</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button onclick="calculateRhombusArea()" class="btn btn-primary w-full">Calculate</button>
+            </div>
+          </div>
+        </div>
+        <!-- Pentagon Area -->
+        <div class="card bg-base-100 w-80 shadow-xl text-center">
+          <figure class="p-6">
+            <img
+              src="images/pentagon.png"
+              alt="pentagon" />
+          </figure>
+          <div class="card-body">
+            <h2 class="text-3xl font-bold text-center">Pentagon</h2>
+            <p>Area = 0.5 * p * a</p>
+            <div class="flex overflow-hidden justify-center gap-4">
+              <div class="flex gap-1">
+                <input id="pentagon-perimeter" class="bg-gray-100 text-lg rounded-md w-24 outline-none px-2 py-1" type="text" placeholder="peri"> <span>cm</span>
+              </div>
+              <div class="flex gap-1">
+                <input id="pentagon-apothem" class="bg-gray-100 text-lg rounded-md outline-none px-2 py-1 w-24" type="text" placeholder="apo"> <span>cm</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button onclick="calculatePentagonArea()" class="btn btn-primary w-full">Calculate</button>
+            </div>
+          </div>
+        </div>
+        <!-- Ellipse Area -->
+        <div class="card bg-base-100 w-80 shadow-xl text-center">
+          <figure class="p-6">
+            <img
+              src="images/ellipse.png"
+              alt="ellipse" />
+          </figure>
+          <div class="card-body">
+            <h2 class="text-3xl font-bold text-center">Ellipse</h2>
+            <p>Area = 𝝿ab</p>
+            <div class="flex overflow-hidden justify-center gap-4">
+              <div class="flex gap-1">
+                <input id="ellipse-major-axis" class="bg-gray-100 text-lg rounded-md w-24 outline-none px-2 py-1" type="text" placeholder="major"> <span>cm</span>
+              </div>
+              <div class="flex gap-1">
+                <input id="ellipse-minor-axis" class="bg-gray-100 text-lg rounded-md outline-none px-2 py-1 w-24" type="text" placeholder="minor"> <span>cm</span>
+              </div>
+            </div>
+            <div class="card-actions">
+              <button onclick="calculateEllipseArea()" class="btn btn-primary w-full">Calculate</button>
+            </div>
+          </div>
+        </div>
+       </div>
+       <!-- Area calculation container -->
+        <div id="area-calculation" class="card bg-base-100 h-96 shadow-md p-8 text-center">
+          <h3 class="text-3xl font-bold">Area Calculation</h3>
+          <p class="text-xl mt-5 font-semibold" id="calculate-result"></p>
+        </div>
+    </div>
+  </main>
+
+  <script src="scripts/script.js"></script>
+  <script src="scripts/result.js"></script>
+</body>
+
+</html>
